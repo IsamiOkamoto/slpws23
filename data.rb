@@ -21,4 +21,6 @@ def delete()
     db = SQLite3::Database.new("db/data.db")
     db.execute("DELETE FROM items")
 end
-p tester()
+CSV.foreach(file,{headers: :first_row, quote_char: "\x00"}) do |line|
+    p line
+end
