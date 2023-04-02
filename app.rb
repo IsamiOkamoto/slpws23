@@ -3,7 +3,7 @@ require 'sinatra/reloader'
 require 'bcrypt'
 require 'sqlite3'
 enable :sessions
-
+#Sökfunktion när man väljer då den visar slumpvis för det är för många saker, sökfunktion + stavningsfunktion
 def open_db()
     db = SQLite3::Database.new("db/data.db")
 end
