@@ -1,0 +1,35 @@
+h2 #{pokemon[0][1]}
+img src="img/#{pokemon[0][2]}" alt="#{pokemon[0][2]}"
+form action="pokemon" method="post" 
+    select name="pokemon"
+        option value="#{pokemon[0][1]}" 
+    input type="text" name="nickname" placeholder="Nickname"
+    h3 ability: 
+    select name="ability" 
+        - ability.each do |n|
+            option value="#{n["name"]}"#{n["name"]}
+    h3 Item: 
+    select name="item" 
+        - item.each do |n|
+            option value="#{n["name"]}"#{n["name"]}
+    h3 Nature:
+    select name="nature"
+        - nature.each do |n|
+            option value="#{n["name"]}"#{n["name"]}
+    h3 First Move: 
+    select name="move1"
+        - moves.each do |n|
+            option value="#{n["name"]}"#{n["name"]}
+    h3 Second Move: 
+    select name="move2"
+        - moves.each do |n|
+            option value="#{n["name"]}"#{n["name"]}
+    h3 Third Move:
+    select name="move3"
+        - moves.each do |n|
+            option value="#{n["name"]}"#{n["name"]}
+    h3 Fourth Move:
+    select name="move4"
+        - moves.each do |n|
+            option value="#{n["name"]}"#{n["name"]}
+    input type="submit" value="Create Pokémon"
