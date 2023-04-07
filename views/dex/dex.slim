@@ -1,0 +1,23 @@
+/ form action="search" method="post"
+    input type="text" name="name" placeholder="Search"
+    input type="submit" value="Enter"
+section#sectiondex1
+    h2.h2_dex Abilities
+    - arr[0].each do |arrr|
+        p
+            a.dex_link href="/dex/ability/#{arrr[0]}"#{arrr[0]}
+section#sectiondex2
+    h2.h2_dex Items
+    - arr[1].each do |arrr|
+        p
+            a.dex_link href="/dex/item/#{arrr[0]}"#{arrr[0]}
+section#sectiondex3
+    h2.h2_dex Moves
+    - arr[2].each do |arrr|
+        p 
+            a.dex_link href="/dex/move/#{arrr[0]}"#{arrr[0]}
+section#sectiondex4
+    h2.h2_dex Pokémons
+    - arr[3].each do |arrr|
+        p 
+            a.dex_link href="/dex/pokemon/#{arrr[0]}"#{arrr[0]}

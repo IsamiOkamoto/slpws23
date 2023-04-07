@@ -6,8 +6,34 @@ enable :sessions
 #Sökfunktion när man väljer då den visar slumpvis för det är för många saker, sökfunktion + stavningsfunktion
 def open_db()
     db = SQLite3::Database.new("db/data.db")
+    return db
 end
-get("/") do
+def get_dex()
+    db = SQLite3::Database.new("db/data.db")
+    arr = []
+    arr.append(db.execute("SELECT name FROM abilities"))
+    arr.append(db.execute("SELECT name FROM items"))
+    arr.append(db.execute("SELECT name FROM moves"))
+    arr.append(db.execute("SELECT name FROM pokemon"))
+    return arr
+end
+def get_ability_from_name(name)
+    db = open_db()
+    return db.execute("SELECT * FROM abilities WHERE name IS ?",name)
+end
+def get_move_from_name(name)
+    db = open_db()
+    return db.execute("SELECT * FROM moves WHERE name IS ?",name)
+end
+def get_item_from_name(name)
+    db = open_db()
+    return db.execute("SELECT * FROM items WHERE name IS ?",name)
+end
+def get_pokemon_from_name(name)
+    db = open_db()
+    return db.execute("SELECT * FROM pokemon WHERE name IS ?",name)
+end
+    get("/") do
     slim(:index)
 end
 get("/teams/new") do
@@ -43,4 +69,28 @@ get("/teams/poke/edit") do
 end
 get("/myteams") do
     slim(:viewteams)
+end
+get("/dex") do
+    arr = get_dex()
+    slim(:"/dex/dex",locals:{arr:arr})
+end
+get("/dex/ability/:name") do
+    name = params[:name]
+    arr = get_ability_from_name(name)
+    slim(:"dex/ability",locals:{arr:arr})
+end
+get("/dex/move/:name") do
+    name = params[:name]
+    arr = get_move_from_name(name)
+    slim(:"dex/move",locals:{arr:arr})
+end
+get("/dex/item/:name") do
+    name = params[:name]
+    arr = get_item_from_name(name)
+    slim(:"dex/item",locals:{arr:arr})
+end
+get("/dex/pokemon/:name") do
+    name = params[:name]
+    arr = get_pokemon_from_name(name)
+    slim(:"dex/pokemon",locals:{arr:arr})
 end
