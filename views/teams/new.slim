@@ -1,3 +1,88 @@
-form action="new_team" method="post" 
+form action="/teams/new" method="post" 
     input type="text" name="team_name" placeholder="Team name"
+    h3 Select Pokémon, from your own or other users Pokémon
+    h3 First Pokémon:
+    h4 Your own Pokémon
+    - i = 0
+    select name="poke1_own" 
+        option value="#{nil}"-
+        - result.each do |hash|
+            option value="#{hash["id"]}"#{hash["nickname"]} (#{arr[i]["name"]})
+            - i += 1
+    h4 Others Pokémon 
+    select name="poke1_other" 
+        option value="#{nil}"-
+        - result2.each do |hash|
+            option value="#{hash["id"]}"#{hash["nickname"]} (#{arr[i]["name"]})
+            - i += 1
+    h3 Second Pokémon:
+    h4 Your own Pokémon
+    - i = 0
+    select name="poke2_own" 
+        option value="#{nil}"-
+        - result.each do |hash|
+            option value="#{hash["id"]}"#{hash["nickname"]} (#{arr[i]["name"]})
+            - i += 1
+    h4 Others Pokémon 
+    select name="poke2_other" 
+        option value="#{nil}"-
+        - result2.each do |hash|
+            option value="#{hash["id"]}"#{hash["nickname"]} (#{arr[i]["name"]})
+            - i += 1
+    h3 Third Pokémon:
+    h4 Your own Pokémon
+    - i = 0
+    select name="poke3_own" 
+        option value="#{nil}"-
+        - result.each do |hash|
+            option value="#{hash["id"]}"#{hash["nickname"]} (#{arr[i]["name"]})
+            - i += 1
+    h4 Others Pokémon 
+    select name="poke3_other" 
+        option value="#{nil}"-
+        - result2.each do |hash|
+            option value="#{hash["id"]}"#{hash["nickname"]} (#{arr[i]["name"]})
+            - i += 1
+    h3 Fourth Pokémon:
+    h4 Your own Pokémon
+    - i = 0
+    select name="poke4_own" 
+        option value="#{nil}"-
+        - result.each do |hash|
+            option value="#{hash["id"]}"#{hash["nickname"]} (#{arr[i]["name"]})
+            - i += 1
+    h4 Others Pokémon 
+    select name="poke4_other" 
+        option value="#{nil}"-
+        - result2.each do |hash|
+            option value="#{hash["id"]}"#{hash["nickname"]} (#{arr[i]["name"]})
+            - i += 1
+    h3 Fifth Pokémon:
+    h4 Your own Pokémon
+    - i = 0
+    select name="poke5_own" 
+        option value="#{nil}"-
+        - result.each do |hash|
+            option value="#{hash["id"]}"#{hash["nickname"]} (#{arr[i]["name"]})
+            - i += 1
+    h4 Others Pokémon 
+    select name="poke5_other" 
+        option value="#{nil}"-
+        - result2.each do |hash|
+            option value="#{hash["id"]}"#{hash["nickname"]} (#{arr[i]["name"]})
+            - i += 1
+    h3 Sixth Pokémon:
+    h4 Your own Pokémon
+    - i = 0
+    select name="poke6_own" 
+        option value="#{nil}"-
+        - result.each do |hash|
+            option value="#{hash["id"]}"#{hash["nickname"]} (#{arr[i]["name"]})
+            - i += 1
+    h4 Others Pokémon 
+    select name="poke6_other" 
+        option value="#{nil}"-
+        - result2.each do |hash|
+            option value="#{hash["id"]}"#{hash["nickname"]}(#{arr[i]["name"]})
+            - i += 1
     input type="submit" value="Create"
