@@ -179,7 +179,6 @@ get("/pokemon/:id/edit") do
     ability = db.execute("SELECT * FROM abilities")
     slim(:"pokemon/update",locals:{current:current,nature:nature,item:item,moves:moves,ability:ability})
 end
-#belong to team
 post("/pokemon/:id/delete") do
     id = params[:id]
     db = open_db()
@@ -206,7 +205,7 @@ post("/pokemon/:id/update") do
     mov4_id = from_name(mov4, "moves")
     ability_id = from_name(ability, "abilities")
     db.execute("UPDATE poke_in_team SET nickname=?, move_one_id=?, move_two_id=?, move_three_id=?, move_four_id=?, nature_id=?, item_id=?, ability_id=? WHERE id IS ?",nickname, mov1_id[0]["id"], mov2_id[0]["id"], mov3_id[0]["id"], mov4_id[0]["id"], nature_id[0]["id"], item_id[0]["id"],  ability_id[0]["id"], id)
-    redirect("/pokemon/show")
+    redirect("/pokemon/")
 end
 get("/teams/new") do
     db = open_db()
@@ -223,9 +222,15 @@ get("/teams/new") do
     slim(:"teams/new",locals:{result:result,result2:result2,pokemon:pokemon,arr:arr})
 end
 get("/teams/") do
+    db = open_db()
+    result = db.execute("SELECT * FROM teams WHERE user_id IS ?",session[:id])
+    arr_id = []
+    i = 0
+    result.each do |hash|
+        arr_id.append([])
     slim(:"/teams/index")
 end
-post("/teams/new") do
+post("/teams/new") do #ändra för en mapping table
     poke1 = params[:poke1_own]
     if poke1 == ""
         poke1 = params[:poke1_other]
